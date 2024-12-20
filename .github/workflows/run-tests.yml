@@ -53,7 +53,7 @@ jobs:
 
       - name: Set up Database
         run: |
-          php testbench workbench:create-sqlite-db
-          php testbench fortify:install
+          php ./vendor/bin/testbench workbench:create-sqlite-db
+          php ./vendor/bin/testbench fortify:install
       - name: Execute tests
         run: vendor/bin/pest --ci
