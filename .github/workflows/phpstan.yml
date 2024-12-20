@@ -1,0 +1,14 @@
+name: PHPStan
+
+on:
+  push:
+    paths:
+      - '**.php'
+      - 'phpstan.neon.dist'
+      - '.github/workflows/phpstan.yml'
+
+jobs:
+  phpstan:
+    uses: stefanzweifel/reusable-workflows/.github/workflows/phpstan.yml@main
+    with:
+      php_version: '8.3'
