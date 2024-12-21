@@ -1,6 +1,6 @@
 <?php
 
-namespace Wnx\TfaSudoMode\Http\Controllers;
+namespace Wnx\TfaConfirmation\Http\Controllers;
 
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Foundation\Auth\User;
@@ -28,7 +28,7 @@ class ConfirmTwoFactorAuthenticationCodeController
 
         if (! $user->hasEnabledTwoFactorAuthentication()) {
             throw ValidationException::withMessages([
-                'code' => [__('tfa-sudo-mode::translations.validation.two_factor_authentication_not_enabled')],
+                'code' => [__('tfa-confirmation::translations.validation.two_factor_authentication_not_enabled')],
             ]);
         }
 
@@ -36,7 +36,7 @@ class ConfirmTwoFactorAuthenticationCodeController
 
         if (! $confirmed) {
             throw ValidationException::withMessages([
-                'code' => [__('tfa-sudo-mode::translations.validation.invalid_two_factor_authentication_code')],
+                'code' => [__('tfa-confirmation::translations.validation.invalid_two_factor_authentication_code')],
             ]);
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Wnx\TfaSudoMode\Http\Middleware;
+namespace Wnx\TfaConfirmation\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -17,14 +17,14 @@ readonly class RequireTwoFactorAuthenticationConfirmation
         protected UrlGenerator $urlGenerator,
         $timeout = null,
     ) {
-        $this->timeout = $timeout ?: config('tfa-sudo-mode.timeout');
+        $this->timeout = $timeout ?: config('tfa-confirmation.timeout');
     }
 
     public function handle(Request $request, Closure $next): Response
     {
         if ($this->shouldConfirmTwoFactor($request)) {
             if ($request->expectsJson()) {
-                return app(config('tfa-sudo-mode.json_response'))();
+                return app(config('tfa-confirmation.json_response'))();
             }
 
             return $this->responseFactory->redirectGuest(
@@ -38,7 +38,7 @@ readonly class RequireTwoFactorAuthenticationConfirmation
     protected function shouldConfirmTwoFactor(Request $request): bool
     {
         // Do not ask for two-factor authentication if sudo mode has been disabled.
-        if (config('tfa-sudo-mode.enabled') === false) {
+        if (config('tfa-confirmation.enabled') === false) {
             return false;
         }
 
@@ -48,7 +48,7 @@ readonly class RequireTwoFactorAuthenticationConfirmation
         }
 
         // Calculate the time since the user last confirmed their two-factor authentication code.
-        $sessionValue = $request->session()->get(config('tfa-sudo-mode.session_key'));
+        $sessionValue = $request->session()->get(config('tfa-confirmation.session_key'));
         $confirmedAtTimestamp = time() - $sessionValue;
 
         // Return true if the user has not confirmed their two-factor authentication code within the timeout.

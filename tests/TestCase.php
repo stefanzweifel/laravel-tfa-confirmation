@@ -1,32 +1,22 @@
 <?php
 
-namespace Wnx\TfaSudoMode\Tests;
+namespace Wnx\TfaConfirmation\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\Attributes\WithMigration;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Wnx\TfaSudoMode\TwoFactorSudoModeServiceProvider;
+use Wnx\TfaConfirmation\TwoFactorConfirmationServiceProvider;
 
 #[WithMigration]
 class TestCase extends Orchestra
 {
     use RefreshDatabase;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Wnx\\TfaSudoMode\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
-    }
-
     protected function getPackageProviders($app)
     {
         return [
             \Laravel\Fortify\FortifyServiceProvider::class,
-            TwoFactorSudoModeServiceProvider::class,
+            TwoFactorConfirmationServiceProvider::class,
         ];
     }
 

@@ -2,7 +2,7 @@
 
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
-use Wnx\TfaSudoMode\Http\Middleware\RequireTwoFactorAuthenticationConfirmation;
+use Wnx\TfaConfirmation\Http\Middleware\RequireTwoFactorAuthenticationConfirmation;
 use Workbench\App\Models\User;
 
 use function Pest\Laravel\actingAs;
@@ -38,7 +38,7 @@ it('returns json response if two factor code is required', function (): void {
     actingAs($user)
         ->getJson('_/require-two-factor')
         ->assertJson([
-            'message' => __('tfa-sudo-mode::translations.responses.json'),
+            'message' => __('tfa-confirmation::translations.responses.json'),
         ]);
 });
 
@@ -66,10 +66,10 @@ it('does not redirect user if two factor code is not required for POST as user h
         ]);
 });
 
-it('does not redirect user if sudo mode has been disabled', function () {
+it('does not redirect user if tfa-confirmation has been disabled', function () {
     $user = User::factory()->hasTwoFactorAuthenticationEnabled()->create();
 
-    config(['tfa-sudo-mode.enabled' => false]);
+    config(['tfa-confirmation.enabled' => false]);
 
     actingAs($user)
         ->get('_/require-two-factor')

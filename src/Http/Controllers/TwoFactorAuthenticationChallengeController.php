@@ -1,6 +1,6 @@
 <?php
 
-namespace Wnx\TfaSudoMode\Http\Controllers;
+namespace Wnx\TfaConfirmation\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -14,6 +14,6 @@ class TwoFactorAuthenticationChallengeController
             return redirect('/');
         }
 
-        return view(config('tfa-sudo-mode.challenge_view'));
+        return view(config('tfa-confirmation.challenge_view'));
     }
 }
