@@ -14,6 +14,6 @@ class TwoFactorAuthenticationChallengeController
             return redirect('/');
         }
 
-        return view(config('tfa-sudo-mode.challenge_view'));
+        return view(config('tfa-confirmation.challenge_view'));
     }
 }

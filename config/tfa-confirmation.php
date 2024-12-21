@@ -8,7 +8,7 @@ return [
     /**
      * Enable or disable two-factor authentication sudo mode
      */
-    'enabled' => env('TFA_SUDO_MODE_ENABLED', true),
+    'enabled' => env('TFA_CONFIRMATION_ENABLED', true),
 
     /**
      * The session key that is used to store the timestamp of the last time
@@ -20,13 +20,13 @@ return [
      * The amount of time in seconds the sudo mode is active.
      * Users will not be asked to enter their two-factor authentication code again for this amount of time.
      */
-    'timeout' => env('TFA_SUDO_MODE_TIMEOUT', 60 * 60 * 24), // 24 hours
+    'timeout' => env('TFA_CONFIRMATION_TIMEOUT', 60 * 60 * 24), // 24 hours
 
     /**
      * The view that should be returned when the user needs to confirm their two-factor authentication code.
      * You should publish the views to your application to customize the challenge view.
      */
-    'challenge_view' => 'tfa-sudo-mode::challenge',
+    'challenge_view' => 'tfa-confirmation::challenge',
 
     /**
      * Controller used to show the two-factor authentication challenge view.

@@ -12,7 +12,7 @@ it('returns challenge view from challenge route', function () {
         ->get(route('auth.two-factor-authentication.challenge'));
 
     $response->assertOk();
-    $response->assertViewIs('tfa-sudo-mode::challenge');
+    $response->assertViewIs('tfa-confirmation::challenge');
 });
 
 it('redirects to root if user without two factor authentication visits challenge view', function () {
@@ -37,5 +37,5 @@ it('redirects to challenge view if user has not confirmed two factor authenticat
         ->get(route('auth.two-factor-authentication.challenge'));
 
     $response->assertOk();
-    $response->assertViewIs('tfa-sudo-mode::challenge');
+    $response->assertViewIs('tfa-confirmation::challenge');
 });

@@ -14,7 +14,7 @@ class DefaultJsonResponse
     public function __invoke(): JsonResponse
     {
         return $this->responseFactory->json([
-            'message' => __('tfa-sudo-mode::translations.responses.json'),
+            'message' => __('tfa-confirmation::translations.responses.json'),
         ], 423);
     }
 }

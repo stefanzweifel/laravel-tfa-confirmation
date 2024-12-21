@@ -15,7 +15,7 @@ readonly class StoreTwoFactorConfirmedAtInSessionListener
         // Store the two factor confirmed at timestamp in the session,
         // so that users are not immediately asked for a code again.
         $this->session->put(
-            config('tfa-sudo-mode.session_key'),
+            config('tfa-confirmation.session_key'),
             Date::now()->unix()
         );
     }

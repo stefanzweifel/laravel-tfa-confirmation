@@ -19,7 +19,7 @@ class TwoFactorConfirmationServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('tfa-sudo-mode')
+            ->name('tfa-confirmation')
             ->hasConfigFile()
             ->hasViews()
             ->hasRoute('web')
@@ -28,7 +28,7 @@ class TwoFactorConfirmationServiceProvider extends PackageServiceProvider
                 $command
                     ->publishConfigFile()
                     // ->copyAndRegisterServiceProviderInApp()
-                    ->askToStarRepoOnGitHub('wnx/tfa-sudo-mode');
+                    ->askToStarRepoOnGitHub('stefanzweifel/laravel-tfa-confirmation');
             });
     }
 

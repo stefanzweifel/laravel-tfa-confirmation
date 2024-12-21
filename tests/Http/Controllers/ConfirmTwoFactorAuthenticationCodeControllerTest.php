@@ -17,7 +17,7 @@ it('confirms valid two factor authentication code stores timestamp in session an
         ]);
 
     $response->assertRedirect('/');
-    $response->assertSessionHas(config('tfa-sudo-mode.session_key'));
+    $response->assertSessionHas(config('tfa-confirmation.session_key'));
 });
 
 it('dispatches event that valid two factor code was provided', function () {
@@ -48,7 +48,7 @@ it('throws validation error if two factor authentication code is invalid', funct
         ]);
 
     $response->assertSessionHasErrors(['code']);
-    $response->assertSessionMissing(config('tfa-sudo-mode.session_key'));
+    $response->assertSessionMissing(config('tfa-confirmation.session_key'));
 });
 
 it('throws validation error if code is submitted for a user where two factor authentication is not enabled', function (): void {
@@ -61,7 +61,7 @@ it('throws validation error if code is submitted for a user where two factor aut
         ]);
 
     $response->assertSessionHasErrors(['code' => __('Two factor authentication is not enabled for this user.')]);
-    $response->assertSessionMissing(config('tfa-sudo-mode.session_key'));
+    $response->assertSessionMissing(config('tfa-confirmation.session_key'));
 });
 
 it('throws validation error if two factor authentication code is not provided', function (): void {
@@ -74,5 +74,5 @@ it('throws validation error if two factor authentication code is not provided', 
         ]);
 
     $response->assertSessionHasErrors(['code']);
-    $response->assertSessionMissing(config('tfa-sudo-mode.session_key'));
+    $response->assertSessionMissing(config('tfa-confirmation.session_key'));
 });
