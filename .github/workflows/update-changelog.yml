@@ -4,6 +4,9 @@ on:
   release:
     types: [released]
 
+permissions:
+  contents: write
+
 jobs:
   update:
     uses: stefanzweifel/reusable-workflows/.github/workflows/update-changelog.yml@main
