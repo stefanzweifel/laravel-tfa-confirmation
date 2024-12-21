@@ -50,9 +50,5 @@ jobs:
       - name: List Installed Dependencies
         run: composer show -D
 
-      - name: Set up Database
-        run: |
-          php ./vendor/bin/testbench workbench:create-sqlite-db
-          php ./vendor/bin/testbench fortify:install
       - name: Execute tests
         run: vendor/bin/pest --ci

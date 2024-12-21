@@ -56,7 +56,7 @@ class UserFactory extends Factory
     public function hasTwoFactorAuthenticationEnabled(): static
     {
         return $this->state(fn () => [
-            'two_factor_confirmed_at' => now(),
+            // 'two_factor_confirmed_at' => now(),
         ])->afterMaking(function (User $user) {
             $enableTwoFactorAuthentication = app(EnableTwoFactorAuthentication::class);
             $enableTwoFactorAuthentication($user);

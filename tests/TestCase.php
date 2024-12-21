@@ -30,20 +30,20 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    protected function defineEnvironment($app)
     {
-        config()->set('database.default', 'testing');
+        $app['config']->set('database.default', 'testbench');
 
-        config()->set('database.default', 'sqlite');
-        config()->set('database.connections.sqlite', [
+        $app['config']->set('database.connections.testbench', [
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
         ]);
+    }
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-tfa-sudo-mode_table.php.stub';
-        $migration->up();
-        */
+    protected function defineDatabaseMigrations()
+    {
+        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../vendor/laravel/fortify/database/migrations');
     }
 }
