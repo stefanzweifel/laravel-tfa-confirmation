@@ -20,7 +20,7 @@
     "require": {
         "php": "^8.3",
         "illuminate/contracts": "^11.2",
-        "laravel/fortify": "^1.2",
+        "laravel/fortify": "^1.25",
         "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
