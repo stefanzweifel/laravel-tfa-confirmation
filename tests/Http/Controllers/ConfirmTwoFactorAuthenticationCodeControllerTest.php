@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Event;
 use Laravel\Fortify\Events\ValidTwoFactorAuthenticationCodeProvided;
 use PragmaRX\Google2FA\Google2FA;
 use Workbench\App\Models\User;

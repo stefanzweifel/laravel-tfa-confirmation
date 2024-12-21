@@ -2,7 +2,6 @@
 
 namespace Wnx\TfaSudoMode\Http\Controllers;
 
-use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\RedirectResponse;
@@ -23,7 +22,7 @@ class ConfirmTwoFactorAuthenticationCodeController
             'code' => ['required', 'numeric', 'min_digits:6', 'max_digits:6'],
         ]);
 
-        /** @var User|Authenticatable $user */
+        /** @var User $user */
         $user = $request->user();
         $code = $request->code;
 
@@ -41,6 +40,7 @@ class ConfirmTwoFactorAuthenticationCodeController
             ]);
         }
 
+        /** @phpstan-ignore-next-line */
         event(new ValidTwoFactorAuthenticationCodeProvided($user));
 
         return $this->responseFactory->redirectToIntended('/');
