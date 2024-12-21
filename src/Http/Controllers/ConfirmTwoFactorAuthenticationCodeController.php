@@ -23,7 +23,7 @@ class ConfirmTwoFactorAuthenticationCodeController
             'code' => ['required', 'numeric', 'min_digits:6', 'max_digits:6'],
         ]);
 
-        /** @var User|Authenticatable $user */
+        /** @var User $user */
         $user = $request->user();
         $code = $request->code;
 
@@ -41,6 +41,7 @@ class ConfirmTwoFactorAuthenticationCodeController
             ]);
         }
 
+        /** @phpstan-ignore-next-line */
         event(new ValidTwoFactorAuthenticationCodeProvided($user));
 
         return $this->responseFactory->redirectToIntended('/');
