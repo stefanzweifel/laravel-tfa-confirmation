@@ -1,6 +1,6 @@
 <?php
 
-namespace Wnx\TfaSudoMode\Http\Middleware;
+namespace Wnx\TfaConfirmation\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Routing\ResponseFactory;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Wnx\TfaSudoMode\Contracts;
+namespace Wnx\TfaConfirmation\Contracts;
 
 use Illuminate\Http\Request;
 

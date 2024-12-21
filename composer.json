@@ -1,14 +1,14 @@
 {
-    "name": "wnx/laravel-tfa-sudo-mode",
+    "name": "wnx/laravel-tfa-confirmation",
     "description": "Protect sensitive routes or actions with a confirmation-screen and ask for the two-factor authentication code of a user",
     "keywords": [
         "Stefan Zweifel",
         "laravel",
-        "laravel-tfa-sudo-mode",
+        "laravel-tfa-confirmation",
         "two-factor-authentication",
         "fortify"
     ],
-    "homepage": "https://github.com/stefanzweifel/laravel-tfa-sudo-mode",
+    "homepage": "https://github.com/stefanzweifel/laravel-tfa-confirmation",
     "license": "MIT",
     "authors": [
         {
@@ -37,12 +37,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Wnx\\TfaSudoMode\\": "src/"
+            "Wnx\\TfaConfirmation\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Wnx\\TfaSudoMode\\Tests\\": "tests/",
+            "Wnx\\TfaConfirmation\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
@@ -81,7 +81,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Wnx\\TfaSudoMode\\TwoFactorSudoModeServiceProvider"
+                "Wnx\\TfaConfirmation\\TwoFactorConfirmationServiceProvider"
             ]
         }
     },

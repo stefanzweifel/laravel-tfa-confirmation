@@ -1,8 +1,8 @@
 <?php
 
-use Wnx\TfaSudoMode\Http\Controllers\ConfirmTwoFactorAuthenticationCodeController;
-use Wnx\TfaSudoMode\Http\Controllers\TwoFactorAuthenticationChallengeController;
-use Wnx\TfaSudoMode\Http\Responses\DefaultJsonResponse;
+use Wnx\TfaConfirmation\Http\Controllers\ConfirmTwoFactorAuthenticationCodeController;
+use Wnx\TfaConfirmation\Http\Controllers\TwoFactorAuthenticationChallengeController;
+use Wnx\TfaConfirmation\Http\Responses\DefaultJsonResponse;
 
 return [
     /**

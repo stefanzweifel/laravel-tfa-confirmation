@@ -2,7 +2,7 @@
 
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
-use Wnx\TfaSudoMode\Http\Middleware\RequireTwoFactorAuthenticationConfirmation;
+use Wnx\TfaConfirmation\Http\Middleware\RequireTwoFactorAuthenticationConfirmation;
 use Workbench\App\Models\User;
 
 use function Pest\Laravel\actingAs;

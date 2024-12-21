@@ -1,12 +1,12 @@
 <?php
 
-namespace Wnx\TfaSudoMode\Tests;
+namespace Wnx\TfaConfirmation\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\Attributes\WithMigration;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Wnx\TfaSudoMode\TwoFactorSudoModeServiceProvider;
+use Wnx\TfaConfirmation\TwoFactorConfirmationServiceProvider;
 
 #[WithMigration]
 class TestCase extends Orchestra
@@ -26,7 +26,7 @@ class TestCase extends Orchestra
     {
         return [
             \Laravel\Fortify\FortifyServiceProvider::class,
-            TwoFactorSudoModeServiceProvider::class,
+            TwoFactorConfirmationServiceProvider::class,
         ];
     }
 

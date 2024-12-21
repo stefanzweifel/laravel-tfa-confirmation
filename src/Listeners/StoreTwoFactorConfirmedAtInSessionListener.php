@@ -1,6 +1,6 @@
 <?php
 
-namespace Wnx\TfaSudoMode\Listeners;
+namespace Wnx\TfaConfirmation\Listeners;
 
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Date;

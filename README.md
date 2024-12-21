@@ -1,9 +1,9 @@
 # Ask for the two-factor authentication code of a user before accessing sensitive routes or actions.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/stefanzweifel/laravel-tfa-sudo-mode.svg?style=flat-square)](https://packagist.org/packages/wnx/laravel-tfa-sudo-mode)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/stefanzweifel/laravel-tfa-sudo-mode/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/stefanzweifel/laravel-tfa-sudo-mode/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/stefanzweifel/laravel-tfa-sudo-mode/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/stefanzweifel/laravel-tfa-sudo-mode/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/stefanzweifel/laravel-tfa-sudo-mode.svg?style=flat-square)](https://packagist.org/packages/wnx/laravel-tfa-sudo-mode)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/wnx/laravel-tfa-confirmation.svg?style=flat-square)](https://packagist.org/packages/wnx/laravel-tfa-confirmation)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/stefanzweifel/laravel-tfa-confirmation/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/stefanzweifel/laravel-tfa-confirmation/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/stefanzweifel/laravel-tfa-confirmation/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/stefanzweifel/laravel-tfa-confirmation/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/stefanzweifel/laravel-tfa-confirmation.svg?style=flat-square)](https://packagist.org/packages/wnx/laravel-tfa-confirmation)
 
 Protect sensitive routes or actions with a confirmation-screen and ask for the two-factor authentication code of a user. Users are not asked for a confirmation again for a given time period. (Similar to the [Password Confirmation](https://laravel.com/docs/master/authentication#password-confirmation) feature of Laravel.)
 
@@ -14,7 +14,7 @@ The package uses [Laravel Fortify](https://laravel.com/docs/master/fortify) unde
 You can install the package via composer:
 
 ```bash
-composer require wnx/laravel-tfa-sudo-mode
+composer require wnx/laravel-tfa-confirmation
 ```
 
 You can publish the config file with:
@@ -28,9 +28,9 @@ This is the contents of the published config file:
 ```php
 <?php
 
-use Wnx\TfaSudoMode\Http\Controllers\ConfirmTwoFactorAuthenticationCodeController;
-use Wnx\TfaSudoMode\Http\Controllers\TwoFactorAuthenticationChallengeController;
-use Wnx\TfaSudoMode\Http\Responses\DefaultJsonResponse;
+use Wnx\TfaConfirmation\Http\Controllers\ConfirmTwoFactorAuthenticationCodeController;
+use Wnx\TfaConfirmation\Http\Controllers\TwoFactorAuthenticationChallengeController;
+use Wnx\TfaConfirmation\Http\Responses\DefaultJsonResponse;
 
 return [
     /**
@@ -92,7 +92,7 @@ To protect routes with a two-factor confirmation challenge add the `\Wnx\TfaSudo
 Route::get('/super-important-route', SuperImportantController::class)
     ->middleware([
         // Use Middleware directly
-        \Wnx\TfaSudoMode\Http\Middleware\RequireTwoFactorAuthenticationConfirmation::class,
+        \Wnx\TfaConfirmation\Http\Middleware\RequireTwoFactorAuthenticationConfirmation::class,
 
         // Use Middleware alias
         'require_twofactor_confirmation',
@@ -102,7 +102,7 @@ Route::get('/super-important-route', SuperImportantController::class)
 Route::middleware([
     'auth:sanctum',
     'verified',
-    \Wnx\TfaSudoMode\Http\Middleware\RequireTwoFactorAuthenticationConfirmation::class,
+    \Wnx\TfaConfirmation\Http\Middleware\RequireTwoFactorAuthenticationConfirmation::class,
 ])->group(function () {
     // Routes that need to be protected by two factor authentication
 });  

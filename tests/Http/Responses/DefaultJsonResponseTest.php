@@ -1,6 +1,6 @@
 <?php
 
-use Wnx\TfaSudoMode\Http\Responses\DefaultJsonResponse;
+use Wnx\TfaConfirmation\Http\Responses\DefaultJsonResponse;
 
 it('returns a json response with a message and status code 423', function () {
     $response = app(DefaultJsonResponse::class)();

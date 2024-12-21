@@ -1,15 +1,15 @@
 <?php
 
-namespace Wnx\TfaSudoMode;
+namespace Wnx\TfaConfirmation;
 
 use Illuminate\Support\Facades\Event;
 use Laravel\Fortify\Events\ValidTwoFactorAuthenticationCodeProvided;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Wnx\TfaSudoMode\Listeners\StoreTwoFactorConfirmedAtInSessionListener;
+use Wnx\TfaConfirmation\Listeners\StoreTwoFactorConfirmedAtInSessionListener;
 
-class TwoFactorSudoModeServiceProvider extends PackageServiceProvider
+class TwoFactorConfirmationServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Wnx\TfaSudoMode\Http\Responses;
+namespace Wnx\TfaConfirmation\Http\Responses;
 
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\JsonResponse;

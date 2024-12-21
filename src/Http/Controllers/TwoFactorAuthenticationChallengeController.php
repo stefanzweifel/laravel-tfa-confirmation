@@ -1,6 +1,6 @@
 <?php
 
-namespace Wnx\TfaSudoMode\Http\Controllers;
+namespace Wnx\TfaConfirmation\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;

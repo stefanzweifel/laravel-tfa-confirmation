@@ -2,7 +2,7 @@
 
 use Laravel\Fortify\Events\ValidTwoFactorAuthenticationCodeProvided;
 use PragmaRX\Google2FA\Google2FA;
-use Wnx\TfaSudoMode\Listeners\StoreTwoFactorConfirmedAtInSessionListener;
+use Wnx\TfaConfirmation\Listeners\StoreTwoFactorConfirmedAtInSessionListener;
 use Workbench\App\Models\User;
 
 use function Pest\Laravel\freezeTime;
