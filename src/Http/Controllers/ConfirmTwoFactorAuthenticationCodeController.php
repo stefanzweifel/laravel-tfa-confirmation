@@ -2,7 +2,6 @@
 
 namespace Wnx\TfaSudoMode\Http\Controllers;
 
-use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\RedirectResponse;
