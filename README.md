@@ -20,7 +20,7 @@ composer require wnx/laravel-tfa-confirmation
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="tfa-sudo-mode-config"
+php artisan vendor:publish --tag="tfa-confirmation-config"
 ```
 
 This is the contents of the published config file:
@@ -34,9 +34,9 @@ use Wnx\TfaConfirmation\Http\Responses\DefaultJsonResponse;
 
 return [
     /**
-     * Enable or disable two-factor authentication sudo mode
+     * Enable or disable two-factor authentication confirmation.
      */
-    'enabled' => env('TFA_SUDO_MODE_ENABLED', true),
+    'enabled' => env('TFA_CONFIRMATION_ENABLED', true),
 
     /**
      * The session key that is used to store the timestamp of the last time
@@ -45,16 +45,16 @@ return [
     'session_key' => 'auth.two_factor_confirmed_at',
 
     /**
-     * The amount of time in seconds the sudo mode is active.
+     * The amount of time in seconds the confirmation is valid.
      * Users will not be asked to enter their two-factor authentication code again for this amount of time.
      */
-    'timeout' => env('TFA_SUDO_MODE_TIMEOUT', 60 * 60 * 24), // 24 hours
+    'timeout' => env('TFA_CONFIRMATION_TIMEOUT', 60 * 60 * 24), // 24 hours
 
     /**
      * The view that should be returned when the user needs to confirm their two-factor authentication code.
      * You should publish the views to your application to customize the challenge view.
      */
-    'challenge_view' => 'tfa-sudo-mode::challenge',
+    'challenge_view' => 'tfa-confirmation::challenge',
 
     /**
      * Controller used to show the two-factor authentication challenge view.
@@ -78,12 +78,12 @@ return [
 The defaul *challenge*-view is not styled. We highly recommend you publish the views and customize them to your design.
 
 ```bash
-php artisan vendor:publish --tag="tfa-sudo-mode-views"
+php artisan vendor:publish --tag="tfa-confirmation-views"
 ```
 
 ## Usage
 
-To protect routes with a two-factor confirmation challenge add the `\Wnx\TfaSudoMode\Http\Middleware\RequireTwoFactorAuthenticationConfirmation`-middleware to your routes.
+To protect routes with a two-factor confirmation challenge add the `\Wnx\TfaConfirmation\Http\Middleware\RequireTwoFactorAuthenticationConfirmation`-middleware to your routes.
 
 ```php
 // routes/web.php
@@ -111,6 +111,9 @@ Route::middleware([
 > [!NOTE]
 > If a given user does not have two-factor authentication enabled, the middleware is bypassed and the user will not be asked to confirm their two-factor authentication code.
 > If you want certain routes only to be available to users with two-factor authentication enabled, you have to write a custom middleware that checks this condition.
+
+> [!NOTE]
+> The package listens to the `Laravel\Fortify\Events\ValidTwoFactorAuthenticationCodeProvided` event to store the timestamp of the last time the user confirmed their two-factor authentication code. This ensures that the user is not asked to confirm their two-factor authentication code right after logging in.
 
 ## Testing
 

@@ -6,7 +6,7 @@ use Wnx\TfaConfirmation\Http\Responses\DefaultJsonResponse;
 
 return [
     /**
-     * Enable or disable two-factor authentication sudo mode
+     * Enable or disable two-factor authentication confirmation.
      */
     'enabled' => env('TFA_CONFIRMATION_ENABLED', true),
 
@@ -17,7 +17,7 @@ return [
     'session_key' => 'auth.two_factor_confirmed_at',
 
     /**
-     * The amount of time in seconds the sudo mode is active.
+     * The amount of time in seconds the confirmation is valid.
      * Users will not be asked to enter their two-factor authentication code again for this amount of time.
      */
     'timeout' => env('TFA_CONFIRMATION_TIMEOUT', 60 * 60 * 24), // 24 hours
