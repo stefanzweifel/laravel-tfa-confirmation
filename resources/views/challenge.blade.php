@@ -11,7 +11,7 @@
 
 <div>
     <div>
-        {{ __('tfa-sudo-mode::translations.challenge.message') }}
+        {{ __('tfa-confirmation::translations.challenge.message') }}
     </div>
 
     <form method="POST" action="{{ route('auth.two-factor-authentication.confirm') }}">
@@ -19,7 +19,7 @@
 
         <div>
             <label for="code">
-                {{ __('tfa-sudo-mode::translations.challenge.input_label') }}
+                {{ __('tfa-confirmation::translations.challenge.input_label') }}
             </label>
             <input type="text" name="code" id="code" inputmode="numeric" autofocus autocomplete="one-time-code">
 
@@ -29,7 +29,7 @@
         </div>
 
         <button type="submit">
-            {{ __('tfa-sudo-mode::translations.challenge.button_label') }}
+            {{ __('tfa-confirmation::translations.challenge.button_label') }}
         </button>
     </form>
 </div>
