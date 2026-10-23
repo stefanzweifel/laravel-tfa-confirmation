@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        php: [8.5, 8.4]
+        php: [8.6, 8.5, 8.4]
         laravel: [12.*, 13.*]
         stability: [
             prefer-stable,
@@ -50,7 +50,7 @@ jobs:
       - name: Install dependencies
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-          composer update --${{ matrix.stability }} --prefer-dist --no-interaction
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction ${{ matrix.php == '8.6' && '--ignore-platform-req=php' || '' }}
 
       - name: List Installed Dependencies
         run: composer show -D
