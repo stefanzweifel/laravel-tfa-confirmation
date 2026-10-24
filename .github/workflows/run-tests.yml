@@ -22,6 +22,10 @@ jobs:
             prefer-stable,
             # prefer-lowest
           ]
+        # Laravel 12 raises PHP 8.6 deprecations that fail the suite.
+        exclude:
+          - php: 8.6
+            laravel: 12.*
         include:
           - laravel: 13.*
             testbench: 11.*
